@@ -12,6 +12,11 @@ class Frutto:
         frutta = pygame.Rect(self.x*h_quadretto, self.y*h_quadretto, h_quadretto, h_quadretto)
         pygame.draw.rect(screen, (255,0,255), frutta)
 
+    def nuova_posizione(self):
+        self.x = random.randint(0,n_quadretti-1)
+        self.y = random.randint(0,n_quadretti-1)
+        self.posizione = pygame.math.Vector2(self.x, self.y)
+
 class Serpente:
     def __init__(self) -> None:
         self.corpo = [pygame.math.Vector2(9,15), pygame.math.Vector2(8,15),
@@ -30,10 +35,15 @@ class Serpente:
         self.corpo.insert(0, nuovatesta)  
 
     def cambia_direzione(self, nuova_direzione):
-        if nuova_direzione != -self.direction:
-            self.direction = nuova_direzione
-            
+        if nuova_direzione != -self.direzione:
+            self.direzione = nuova_direzione
     
+    def collisione(self):
+        if self.corpo[0] == frutto.posizione:
+            frutto.nuova_posizione()
+            
+
+ 
 
 pygame.init()
 h_quadretto = 40
@@ -54,6 +64,7 @@ while True:
             exit()
         elif event.type == SCREEN_UPDATE:
             serpente.muoviserpente()
+            serpente.collisione()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 serpente.direzione = pygame.math.Vector2(0, -1)
