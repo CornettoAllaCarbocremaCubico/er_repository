@@ -25,6 +25,7 @@ class Spinacina:
         self.tempo = 0
         self.prossima = random.randint(5, 10)
         self.posizionata = False
+        self.tempo_scomparsa = 0
         self.nuova_posizione_spinacina(corpo_serpente)
 
     def nuova_posizione_spinacina(self, corpo_serpente):
@@ -34,15 +35,21 @@ class Spinacina:
             self.posizione = pygame.math.Vector2(self.x, self.y)
             if self.posizione not in corpo_serpente:
                 break
-        self.posizionata = True
+        self.posizionata = False
+        self.tempo_scomparsa = 0
     
     def spawn_spinacina(self, corpo_serpente):
         self.tempo += 1
+        if self.posizionata == True:
+            self.tempo_scomparsa += 1
+            if self.tempo_scomparsa / self.fps >= 5:
+                self.rimuovi()
         if self.tempo / self.fps >= self.prossima and not self.posizionata:
             self.nuova_posizione_spinacina(corpo_serpente)
             self.prossima = random.randint(5, 10)
             self.tempo = 0
-
+            self.posizionata = True
+            
     def disegna_spinacina(self):
         if self.posizionata == True:
             spinacina = pygame.Rect(self.x * h_quadretto, self.y * h_quadretto, h_quadretto, h_quadretto)
@@ -83,22 +90,19 @@ class Serpente:
             spinacina.rimuovi()
     
     def morte(self):
-        if not 0 <= self.corpo[0].x < n_quadretti or not 0 <= self.corpo[0].y < n_quadretti:
+        if not 0 <= self.corpo[0].x < n_quadretti-1 or not 0 <= self.corpo[0].y < n_quadretti:
             self.vivo = False
-
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
     
     
-
-
 pygame.init()
 h_quadretto = 40
 n_quadretti = 20
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 clock = pygame.time.Clock()
-fps = 15
+fps = 5
 
 serpente = Serpente()
 frutto = Frutto(serpente.corpo)
@@ -109,7 +113,7 @@ SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
 
-while serpente.vivo:
+while serpente.vivo == True:
     # 0. tasti
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -129,6 +133,7 @@ while serpente.vivo:
     serpente.muoviserpente()
     # 2. verifico collisioni (che fa succedere cose) 
     serpente.collisione(frutto, spinacina)
+    serpente.morte()
     # 3. spawn spinacina
     spinacina.spawn_spinacina(serpente.corpo)
     # 4. disegno tutti gli elementi
@@ -139,3 +144,5 @@ while serpente.vivo:
     # 5. aggiorno schermo
     pygame.display.update()
     clock.tick(fps)
+
+
