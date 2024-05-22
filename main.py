@@ -2,6 +2,7 @@ import pygame
 import random
 import os, sys
 
+
 class Frutto:
     def __init__(self, corpo_serpente):
         self.nuova_posizione(corpo_serpente) #Vector2 è una classe con x e y a cui
@@ -17,7 +18,7 @@ class Frutto:
     def disegna_frutta(self):
         #pygame.rect(x,y,l,h)
         frutta = pygame.Rect(self.x*h_quadretto, self.y*h_quadretto, h_quadretto, h_quadretto)
-        pygame.draw.rect(screen, (255,0,255), frutta)
+        screen.blit(mela, (self.x*h_quadretto, self.y*h_quadretto, h_quadretto, h_quadretto))
 
 class Spinacina:
     def __init__(self, fps, corpo_serpente):
@@ -53,7 +54,7 @@ class Spinacina:
     def disegna_spinacina(self):
         if self.posizionata == True:
             spinacina = pygame.Rect(self.x * h_quadretto, self.y * h_quadretto, h_quadretto, h_quadretto)
-            pygame.draw.rect(screen, (139, 69, 19), spinacina)
+            screen.blit(spinacheena, (self.x*h_quadretto, self.y*h_quadretto, h_quadretto, h_quadretto))
 
     def rimuovi(self):
         self.posizionata = False
@@ -102,7 +103,14 @@ h_quadretto = 40
 n_quadretti = 20
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 clock = pygame.time.Clock()
-fps = 5
+fps = 8
+mela = pygame.image.load("mela1.png")
+mela = pygame.transform.scale(mela, (h_quadretto, h_quadretto))  
+mela.set_colorkey((255, 255, 255))
+
+spinacheena = pygame.image.load("spinacinafake.png")  
+spinacheena = pygame.transform.scale(spinacheena, (h_quadretto, h_quadretto)) 
+spinacheena.set_colorkey((255, 255, 255))
 
 serpente = Serpente()
 frutto = Frutto(serpente.corpo)
@@ -137,7 +145,7 @@ while serpente.vivo == True:
     # 3. spawn spinacina
     spinacina.spawn_spinacina(serpente.corpo)
     # 4. disegno tutti gli elementi
-    screen.fill("Light Green")
+    screen.fill((144, 238, 144))
     frutto.disegna_frutta()
     serpente.disegna_serpente()
     spinacina.disegna_spinacina()
