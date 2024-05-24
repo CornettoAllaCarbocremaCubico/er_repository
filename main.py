@@ -4,29 +4,32 @@ import os, sys
 from Frutto import Frutto
 from spinacina import Spinacina
 from Serpente import Serpente
-#from erba import erba
+
     
 pygame.init()
 h_quadretto = 40
 n_quadretti = 15
-screen = pygame.display.set_mode((600, 600))
+screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 clock = pygame.time.Clock()
 fps = 8
 
 serpente = Serpente()
 frutto = Frutto(serpente.corpo)
 spinacina = Spinacina(fps, serpente.corpo)
-#grass=erba()
+
+
+sfondo = pygame.image.load("sfondo snake2.jpg")
+sfondo = pygame.transform.scale(sfondo, (h_quadretto*n_quadretti, h_quadretto*n_quadretti))
+
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
-sfondo=pygame.image.load("sfondo snake2.jpg")
-sfondo=pygame.transform.scale(sfondo,(600,600))
-screen.blit(sfondo,(0,0))
 while serpente.vivo == True:
     # 0. tasti
+    
     for event in pygame.event.get():
+        
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
@@ -44,19 +47,24 @@ while serpente.vivo == True:
     serpente.muoviserpente()
     # 2. verifico collisioni (che fa succedere cose) 
     serpente.collisione(frutto, spinacina)
+    
     serpente.morte()
+    
     # 3. spawn spinacina
     spinacina.spawn_spinacina(serpente.corpo)
     # 4. disegno tutti gli elementi
-    screen.fill((144, 238, 144))
-    screen.blit(sfondo,(0,0))
+    
+    
+    screen.blit(sfondo, (0,0))
+    
     frutto.disegna_frutta()
     serpente.disegna_serpente()
     spinacina.disegna_spinacina()
     
-    #grass.disegna_erba()
+    
     # 5. aggiorno schermo
     pygame.display.update()
+    
     clock.tick(fps)
-
+  
 

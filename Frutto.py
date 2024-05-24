@@ -8,7 +8,6 @@ screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadret
 mela = pygame.image.load("mela2.png")
 mela = pygame.transform.scale(mela, (h_quadretto, h_quadretto))  
 
-
 class Frutto:
     def __init__(self, corpo_serpente):
         self.nuova_posizione(corpo_serpente) #Vector2 è una classe con x e y a cui

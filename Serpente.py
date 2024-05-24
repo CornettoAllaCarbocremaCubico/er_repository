@@ -7,8 +7,8 @@ screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadret
 
 class Serpente:
     def __init__(self) -> None:
-        self.corpo = [pygame.math.Vector2(6,8), pygame.math.Vector2(7,8),
-                        pygame.math.Vector2(8,8)]
+        self.corpo = [pygame.math.Vector2(7,9), pygame.math.Vector2(6,9),
+                        pygame.math.Vector2(5,9)]
         
         self.direzione = pygame.math.Vector2(1, 0)
         self.nuova_direzione = self.direzione
@@ -25,7 +25,8 @@ class Serpente:
         nuova_testa = self.corpo[0] + self.direzione
         self.corpo.insert(0, nuova_testa)
         self.corpo.pop()  
-    
+        
+
     def collisione(self, frutto, spinacina):
         if self.corpo[0] == frutto.posizione:
             frutto.nuova_posizione(self.corpo)
@@ -42,3 +43,4 @@ class Serpente:
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
+                print("scontro")
