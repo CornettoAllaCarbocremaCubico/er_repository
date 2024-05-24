@@ -1,13 +1,13 @@
 import pygame
 import random
 
-n_quadretti = 20
+n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 
-mela = pygame.image.load("mela1.png")
+mela = pygame.image.load("mela2.png")
 mela = pygame.transform.scale(mela, (h_quadretto, h_quadretto))  
-mela.set_colorkey((255, 255, 255))
+
 
 class Frutto:
     def __init__(self, corpo_serpente):

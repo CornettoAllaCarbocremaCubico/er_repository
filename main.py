@@ -7,9 +7,9 @@ from Serpente import Serpente
 #from erba import erba
     
 pygame.init()
-h_quadretto = 64
-n_quadretti = 64
-screen = pygame.display.set_mode((964, 964))
+h_quadretto = 40
+n_quadretti = 15
+screen = pygame.display.set_mode((600, 600))
 clock = pygame.time.Clock()
 fps = 8
 
@@ -22,7 +22,7 @@ SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
 sfondo=pygame.image.load("sfondo snake2.jpg")
-sfondo=pygame.transform.scale(sfondo,(964,964))
+sfondo=pygame.transform.scale(sfondo,(600,600))
 screen.blit(sfondo,(0,0))
 while serpente.vivo == True:
     # 0. tasti

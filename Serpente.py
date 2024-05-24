@@ -1,14 +1,14 @@
 import pygame
 import random
 
-n_quadretti = 20
+n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 
 class Serpente:
     def __init__(self) -> None:
-        self.corpo = [pygame.math.Vector2(9,15), pygame.math.Vector2(8,15),
-                        pygame.math.Vector2(7,15)]
+        self.corpo = [pygame.math.Vector2(6,8), pygame.math.Vector2(7,8),
+                        pygame.math.Vector2(8,8)]
         
         self.direzione = pygame.math.Vector2(1, 0)
         self.nuova_direzione = self.direzione
