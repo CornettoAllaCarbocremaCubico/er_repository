@@ -4,7 +4,7 @@ import os, sys
 from Frutto import Frutto
 from spinacina import Spinacina
 from Serpente import Serpente
-
+from Punteggio import Punteggio
     
 pygame.init()
 h_quadretto = 40
@@ -12,12 +12,11 @@ n_quadretti = 15
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 clock = pygame.time.Clock()
 fps = 8
-
+font = pygame.font.Font(None, 20)
 serpente = Serpente()
 frutto = Frutto(serpente.corpo)
 spinacina = Spinacina(fps, serpente.corpo)
-
-
+punteggio = Punteggio()
 sfondo = pygame.image.load("sfondo snake2.jpg")
 sfondo = pygame.transform.scale(sfondo, (h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 
@@ -56,7 +55,7 @@ while serpente.vivo == True:
     
     
     screen.blit(sfondo, (0,0))
-    
+    punteggio.disegna_punteggio(serpente.corpo, font)
     frutto.disegna_frutta()
     serpente.disegna_serpente()
     spinacina.disegna_spinacina()

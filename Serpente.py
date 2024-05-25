@@ -38,9 +38,9 @@ class Serpente:
             spinacina.rimuovi()
     
     def morte(self):
-        if not 0 <= self.corpo[0].x < n_quadretti-1 or not 0 <= self.corpo[0].y < n_quadretti:
+        if not 0 <= self.corpo[0].x <= n_quadretti-1 or not 0 <= self.corpo[0].y <= n_quadretti:
             self.vivo = False
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
-                print("scontro")
+                
