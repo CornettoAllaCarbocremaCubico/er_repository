@@ -47,25 +47,17 @@ while serpente.vivo == True:
     serpente.muoviserpente()
     # 2. verifico collisioni (che fa succedere cose) 
     serpente.collisione(frutto, spinacina)
-    
     serpente.morte()
-    
-    # 3. spawn spinacina
+     # 3. spawn spinacina
     spinacina.spawn_spinacina(serpente.corpo)
     # 4. disegno tutti gli elementi
-    
-    
     screen.blit(sfondo, (0,0))
-    
     frutto.disegna_frutta()
     serpente.disegna_serpente()
     spinacina.disegna_spinacina()
     serpente.punteggio()
-    
-    
     # 5. aggiorno schermo
     pygame.display.update()
-    
     clock.tick(fps)
   
 
