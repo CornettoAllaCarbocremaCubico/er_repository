@@ -9,9 +9,9 @@ from Serpente import Serpente
 pygame.init()
 h_quadretto = 40
 n_quadretti = 15
-screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
+screen = pygame.display.set_mode((h_quadretto*n_quadretti,h_quadretto*n_quadretti))
 clock = pygame.time.Clock()
-fps = 8
+fps = 7
 
 serpente = Serpente()
 frutto = Frutto(serpente.corpo)
@@ -60,6 +60,7 @@ while serpente.vivo == True:
     frutto.disegna_frutta()
     serpente.disegna_serpente()
     spinacina.disegna_spinacina()
+    serpente.punteggio()
     
     
     # 5. aggiorno schermo

@@ -1,6 +1,8 @@
 import pygame
 import random
 
+pygame.init()
+
 n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
@@ -44,3 +46,14 @@ class Serpente:
             if self.corpo[0] == pezzo:
                 self.vivo = False
                 print("scontro")
+
+    def punteggio(self):
+        punti= str(len(self.corpo)-3)
+        font= pygame.font.Font(None,36)
+        supepunti=font.render(punti, True,(0,0,0))
+        rect_punti=supepunti.get_rect(center=(501,61))
+        screen.blit(supepunti,rect_punti)
+
+
+
+
