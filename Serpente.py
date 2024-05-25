@@ -1,6 +1,8 @@
 import pygame
 import random
 
+pygame.init()
+
 n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
@@ -43,4 +45,4 @@ class Serpente:
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
-                
+                print("scontro")

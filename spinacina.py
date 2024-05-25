@@ -3,9 +3,9 @@ import random
 
 n_quadretti = 15
 h_quadretto = 40
-screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
+screen = pygame.display.set_mode((h_quadretto*n_quadretti,h_quadretto*n_quadretti))
 
-spinacheena = pygame.image.load("spinacinafake.png")  
+spinacheena = pygame.image.load("spinacinafake1.png")  
 spinacheena = pygame.transform.scale(spinacheena, (h_quadretto, h_quadretto)) 
 #spinacheena.set_colorkey((255, 255, 255))
 
