@@ -37,9 +37,8 @@ def main_menu():
             pygame.quit()
             sys.exit()
 
-<<<<<<< HEAD
         screen.fill((173, 216, 230))
-=======
+
     # 1. muovo il serpente
     serpente.muoviserpente()
     # 2. verifico collisioni (che fa succedere cose) 
@@ -57,13 +56,13 @@ def main_menu():
     pygame.display.update()
     clock.tick(fps)
   
->>>>>>> 6abc7600b4a393e8764e066ee0cdd02730430175
 
-        disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
-        start_button.disegna_bottone(screen)
-        quit_button.disegna_bottone(screen)
 
-        pygame.display.flip()
+    disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
+    start_button.disegna_bottone(screen)
+    quit_button.disegna_bottone(screen)
+
+    pygame.display.flip()
 
 def game():
     serpente = Serpente()
