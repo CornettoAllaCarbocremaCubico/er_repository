@@ -8,6 +8,7 @@ h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti, h_quadretto*n_quadretti))
 
 class Serpente:
+
     def __init__(self) -> None:
         self.corpo = [pygame.math.Vector2(7,9), pygame.math.Vector2(6,9),
                         pygame.math.Vector2(5,9)]
@@ -45,4 +46,4 @@ class Serpente:
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
-                print("scontro")
+

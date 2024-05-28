@@ -37,7 +37,27 @@ def main_menu():
             pygame.quit()
             sys.exit()
 
+<<<<<<< HEAD
         screen.fill((173, 216, 230))
+=======
+    # 1. muovo il serpente
+    serpente.muoviserpente()
+    # 2. verifico collisioni (che fa succedere cose) 
+    serpente.collisione(frutto, spinacina)
+    serpente.morte()
+     # 3. spawn spinacina
+    spinacina.spawn_spinacina(serpente.corpo)
+    # 4. disegno tutti gli elementi
+    screen.blit(sfondo, (0,0))
+    frutto.disegna_frutta()
+    serpente.disegna_serpente()
+    spinacina.disegna_spinacina()
+    serpente.punteggio()
+    # 5. aggiorno schermo
+    pygame.display.update()
+    clock.tick(fps)
+  
+>>>>>>> 6abc7600b4a393e8764e066ee0cdd02730430175
 
         disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
         start_button.disegna_bottone(screen)
