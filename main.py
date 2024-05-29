@@ -8,15 +8,15 @@ from Serpente import Serpente
 from Punteggio import Punteggio
 from Bottone import Bottone
 
-
 pygame.init()
+pygame.display.set_caption("Snake")
 h_quadretto = 40
 n_quadretti = 15
 screen = pygame.display.set_mode((h_quadretto * n_quadretti, h_quadretto * n_quadretti))
 clock = pygame.time.Clock()
 fps = 8
-font = pygame.font.Font(None, 35)
-
+font = pygame.font.Font("Snakebite-Regular.ttf", 180)
+fontpunteggio = pygame.font.Font(None, 40)
 
 def disegna_testo(text, font, color, surface, x, y):
     text = font.render(text, True, color)
@@ -24,10 +24,18 @@ def disegna_testo(text, font, color, surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(text, textrect)
 
+def mostra_schermata_di_morte():
+    morte_font = pygame.font.Font("DeathMohawk_PERSONAL_USE_ONLY.otf", 155)
+    morte_surf = morte_font.render('GAME OVER', True, (155, 0, 0))
+    morte_rect = morte_surf.get_rect(center=(n_quadretti * h_quadretto // 2, n_quadretti * h_quadretto // 2))
+    screen.blit(morte_surf, morte_rect)
+    pygame.display.flip()
+    pygame.time.wait(2500) 
+    main_menu()
 
 def main_menu():
-    start_button = Bottone((150, 150), 200, 50, "Inizia Gioco")
-    quit_button = Bottone((150, 350), 200, 50, "Esci")
+    start_button = Bottone((70, 330), 200, 50, "Start")
+    quit_button = Bottone((330, 330), 200, 50, "Exit")
 
     while True:
         for event in pygame.event.get():
@@ -42,12 +50,11 @@ def main_menu():
             sys.exit()
 
         screen.fill((173, 216, 230))
-        disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
+        disegna_testo('Snake', font, (0, 0, 0), screen, 125, 100)
         start_button.disegna_bottone(screen)
         quit_button.disegna_bottone(screen)
 
         pygame.display.flip()
-
 
 def game():
     serpente = Serpente()
@@ -81,34 +88,15 @@ def game():
         spinacina.spawn_spinacina(serpente.corpo)
 
         screen.blit(sfondo, (0, 0))
-        punteggio.disegna_punteggio(serpente.corpo, font)
         frutto.disegna_frutta()
         serpente.disegna_serpente()
         spinacina.disegna_spinacina()
-        punteggio.disegna_punteggio(serpente.corpo, font)
+        punteggio.disegna_punteggio(serpente.corpo, fontpunteggio)
 
         pygame.display.update()
         clock.tick(fps)
 
-    main_menu()
-
-
-def options():
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                running = False
-
-        screen.fill((0, 0, 0))
-        disegna_testo('Opzioni', font, (255, 255, 255), screen, 100, 100)
-        pygame.display.flip()
-
-    main_menu()
-
+    mostra_schermata_di_morte()
 
 if __name__ == '__main__':
     main_menu()

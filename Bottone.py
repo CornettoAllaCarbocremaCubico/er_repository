@@ -4,11 +4,11 @@ class Bottone:
     def __init__(self, pos, larghezza, altezza, testo):
         self.cliccato = False
         self.rett = pygame.Rect(pos, (larghezza, altezza))
-        self.testo = pygame.font.Font(None, 35).render(testo, True, (255, 255, 255))
+        self.testo = pygame.font.Font("Snakebite-Regular.ttf", 35).render(testo, True, (0, 0, 0))
         self.testo_rett = self.testo.get_rect(center=self.rett.center)
     
     def disegna_bottone(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), self.rett)
+        pygame.draw.rect(screen, (240, 159, 255), self.rett)
         screen.blit(self.testo, self.testo_rett)
 
     def controllaclick(self):
