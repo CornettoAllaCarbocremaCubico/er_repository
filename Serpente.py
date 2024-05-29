@@ -1,5 +1,5 @@
 import pygame
-import random
+from pygame import mixer
 import math
 
 pygame.init()
@@ -9,6 +9,10 @@ h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto * n_quadretti, h_quadretto * n_quadretti))
 clock = pygame.time.Clock()
 fps = 8
+
+mixer.init()
+suono_munch = mixer.Sound('632231__audacitier__biting-apple-2.mp3')
+suono_spinacina = mixer.Sound('441415__matrixxx__lucky-7-cheerful.wav')
 
 # Caricamento delle immagini
 codadestra = pygame.image.load('codadestra.png')
@@ -114,10 +118,12 @@ class Serpente:
         if self.corpo[0] == frutto.posizione:
             frutto.nuova_posizione(self.corpo)
             self.corpo.append(self.corpo[-1])
+            suono_munch.play()
         if self.corpo[0] == spinacina.posizione:
             self.corpo.append(self.corpo[-1])
             self.corpo.append(self.corpo[-1])
             self.corpo.append(self.corpo[-1])
+            suono_spinacina.play()
             spinacina.rimuovi()
 
     def morte(self):
