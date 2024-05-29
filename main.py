@@ -40,11 +40,11 @@ def main_menu():
         screen.fill((173, 216, 230))
 
 
-        disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
-        start_button.disegna_bottone(screen)
-        quit_button.disegna_bottone(screen)
+    disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
+    start_button.disegna_bottone(screen)
+    quit_button.disegna_bottone(screen)
 
-        pygame.display.flip()
+    pygame.display.flip()
 
 def game():
     serpente = Serpente()
