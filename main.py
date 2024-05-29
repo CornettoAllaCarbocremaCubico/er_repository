@@ -1,11 +1,13 @@
 import pygame
 import random
-import os, sys
+import os
+import sys
 from Frutto import Frutto
 from spinacina import Spinacina
 from Serpente import Serpente
 from Punteggio import Punteggio
 from Bottone import Bottone
+
 
 pygame.init()
 h_quadretto = 40
@@ -15,16 +17,18 @@ clock = pygame.time.Clock()
 fps = 8
 font = pygame.font.Font(None, 35)
 
+
 def disegna_testo(text, font, color, surface, x, y):
     text = font.render(text, True, color)
     textrect = text.get_rect()
     textrect.topleft = (x, y)
     surface.blit(text, textrect)
 
+
 def main_menu():
     start_button = Bottone((150, 150), 200, 50, "Inizia Gioco")
     quit_button = Bottone((150, 350), 200, 50, "Esci")
-    
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -38,13 +42,12 @@ def main_menu():
             sys.exit()
 
         screen.fill((173, 216, 230))
+        disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
+        start_button.disegna_bottone(screen)
+        quit_button.disegna_bottone(screen)
 
+        pygame.display.flip()
 
-    disegna_testo('Menu Principale', font, (0, 0, 0), screen, 150, 50)
-    start_button.disegna_bottone(screen)
-    quit_button.disegna_bottone(screen)
-
-    pygame.display.flip()
 
 def game():
     serpente = Serpente()
@@ -89,6 +92,7 @@ def game():
 
     main_menu()
 
+
 def options():
     running = True
     while running:
@@ -104,6 +108,7 @@ def options():
         pygame.display.flip()
 
     main_menu()
+
 
 if __name__ == '__main__':
     main_menu()

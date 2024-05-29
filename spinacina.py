@@ -7,7 +7,7 @@ screen = pygame.display.set_mode((h_quadretto*n_quadretti,h_quadretto*n_quadrett
 
 spinacheena = pygame.image.load("spinacinafake1.png")  
 spinacheena = pygame.transform.scale(spinacheena, (h_quadretto, h_quadretto)) 
-#spinacheena.set_colorkey((255, 255, 255))
+
 
 class Spinacina:
     def __init__(self, fps, corpo_serpente):
