@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 pygame.init()
 
@@ -61,9 +62,54 @@ class Serpente:
         self.vivo = True
     
     def disegna_serpente(self):
-        for pezzo in self.corpo:
-            pezzo = pygame.Rect(pezzo.x*h_quadretto, pezzo.y*h_quadretto, h_quadretto, h_quadretto)
-            pygame.draw.rect(screen, (0,0,255), pezzo)
+        self.updatetesta()
+        self.updatecoda()
+
+        #for pezzo in self.corpo:
+        #    pezzo = pygame.Rect(pezzo.x*h_quadretto, pezzo.y*h_quadretto, h_quadretto, h_quadretto)
+        #   pygame.draw.rect(screen, (0,0,255), pezzo)
+        for index, block in enumerate(self.corpo):
+            x_pos = int(block.x * h_quadretto)
+            y_pos = int(block.y * h_quadretto)
+            block_rect = pygame. Rect(x_pos,y_pos,h_quadretto,h_quadretto)
+
+        if index == 0:
+            screen.blit(self.testa,block_rect)
+        elif index == len(self.body) - 1:
+            screen.blit(self.tail,block_rect)
+        else:
+            blockprima = self.body[index + 1] - block
+            blockdopo = self.body[index - 1] - block
+        if blockprima.x == blockdopo.x:
+            screen.blit(corpovert,block_rect)
+        elif blockprima.y == blockdopo.y:
+            screen.blit(corpooriz,block_rect)
+        else:
+            if blockprima.x == -1 and blockdopo.y == -1 or blockprima.y == -1 and blockdopo.x == -1:
+                screen.blit(self.body_tl,block_rect)
+            elif blockprima.x == -1 and blockdopo.y == 1 or blockprima.y == 1 and blockdopo.x == -1:
+                screen.blit(self.body_bl,block_rect)
+            elif blockprima.x == 1 and blockdopo.y == -1 or blockprima.y == -1 and blockdopo.x == 1:
+                screen.blit(self.body_tr,block_rect)
+            elif blockprima.x == 1 and blockdopo.y == 1 or blockprima.y == 1 and blockdopo.x == 1:
+                screen.blit(self.body_tr,block_rect)
+
+
+    def updatetesta(self):
+        head_relation = self.corpo[1] - self.corpo[0]
+        if head_relation == math.Vector2(1,0): self.corpo[0] = testadestra
+        elif head_relation == math.Vector2(-1,0): self.corpo[0]= testasinistra
+        elif head_relation == math.Vector2(0,1): self.corpo[0]= testasu
+        elif head_relation == math.Vector2(0,-1): self.corpo[0]= testagiu
+    
+    def updatecoda(self):   
+        tail_relation = self.corpo[-2] - self.corpo[-1]
+        if tail_relation == math.Vector2(1,0): self.corpo[-1] = codasinistra
+        elif tail_relation == math.Vector2(-1,0): self.corpo[-1]= codadestra
+        elif tail_relation == math.Vector2(0,1): self.corpo[-1]= codasu
+        elif tail_relation == math.Vecotr2(0,-1): self.corpo[-1]= codagiu
+
+        
     
     def muoviserpente(self):
         if self.direzione != -self.nuova_direzione:
