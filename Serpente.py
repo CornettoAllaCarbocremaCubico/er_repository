@@ -14,6 +14,7 @@ mixer.init()
 suono_munch = mixer.Sound('632231__audacitier__biting-apple-2.mp3')
 suono_spinacina = mixer.Sound('441415__matrixxx__lucky-7-cheerful.wav')
 
+
 # Caricamento delle immagini
 codadestra = pygame.image.load('codadestra.png')
 codadestra = pygame.transform.scale(codadestra, (h_quadretto, h_quadretto))
@@ -132,3 +133,5 @@ class Serpente:
         for pezzo in self.corpo[1:]:
             if self.corpo[0] == pezzo:
                 self.vivo = False
+        
+        

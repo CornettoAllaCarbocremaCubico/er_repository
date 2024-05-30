@@ -18,9 +18,9 @@ clock = pygame.time.Clock()
 fps = 7
 font = pygame.font.Font("Snakebite-Regular.ttf", 180)
 fontpunteggio = pygame.font.Font(None, 40)
-
 mixer.init()
-#sound_morte = mixer.Sound('145421__soughtaftersounds__haunted-organ-1.mp3')
+suono_morte = pygame.mixer.Sound('735797__leochavolla__goofy-instrument-jumpscare.wav')
+
 
 def disegna_testo(text, font, color, surface, x, y):
     text = font.render(text, True, color)
@@ -34,7 +34,8 @@ def mostra_schermata_di_morte():
     morte_rect = morte_surf.get_rect(center = (n_quadretti * h_quadretto // 2, n_quadretti * h_quadretto // 2))
     screen.blit(morte_surf, morte_rect)
     pygame.display.flip()
-    pygame.time.wait(3000) 
+    suono_morte.play()
+    pygame.time.wait(3500) 
     main_menu()
 
 def main_menu():
@@ -112,8 +113,7 @@ def game():
         clock.tick(fps)
 
     mostra_schermata_di_morte()
-   # sound_morte.play()
-
+    
 
 if __name__ == '__main__':
     main_menu()
