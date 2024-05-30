@@ -53,6 +53,7 @@ def main_menu():
                 sys.exit()
 
         if start_button.controllaclick():
+            pygame.time.wait(1500)
             game()
 
         if quit_button.controllaclick():
@@ -72,17 +73,19 @@ def main_menu():
         clock.tick(30)
 
 def game():
+   
     serpente = Serpente()
     frutto = Frutto(serpente.corpo)
     spinacina = Spinacina(fps, serpente.corpo)
     punteggio = Punteggio()
     sfondo = pygame.image.load("sfondo snake2.jpg")
     sfondo = pygame.transform.scale(sfondo, (h_quadretto * n_quadretti, h_quadretto * n_quadretti))
-
     SCREEN_UPDATE = pygame.USEREVENT
     pygame.time.set_timer(SCREEN_UPDATE, 150)
+ 
 
     while serpente.vivo:
+     
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

@@ -10,9 +10,9 @@ mela = pygame.transform.scale(mela, (h_quadretto, h_quadretto))
 
 class Frutto:
     def __init__(self, corpo_serpente):
-        self.nuova_posizione(corpo_serpente) #Vector2 è una classe con x e y a cui
+        self.nuova_posizionemela(corpo_serpente) #Vector2 è una classe con x e y a cui
                                                                 #attribuisco dei valori float
-    def nuova_posizione(self, corpo_serpente):
+    def nuova_posizionemela(self, corpo_serpente):
         while True:
             self.x = random.randint(0,n_quadretti-1)
             self.y = random.randint(0,n_quadretti-1)
