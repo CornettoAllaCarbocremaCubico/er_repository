@@ -28,10 +28,10 @@ codasu = pygame.image.load('codasu.png')
 codasu = pygame.transform.scale(codasu, (h_quadretto, h_quadretto))
 
 corpooriz = pygame.image.load('corpooriz.png')
-corpooriz = pygame.transform.scale(corpooriz, (h_quadretto, h_quadretto))
+corpooriz = pygame.transform.scale(corpooriz, (h_quadretto, h_quadretto-1))
 
 corpovert = pygame.image.load('corpovert.png')
-corpovert = pygame.transform.scale(corpovert, (h_quadretto, h_quadretto))
+corpovert = pygame.transform.scale(corpovert, (h_quadretto-1, h_quadretto))
 
 curvagd = pygame.image.load('curvagd.png')
 curvagd = pygame.transform.scale(curvagd, (h_quadretto, h_quadretto))
@@ -45,21 +45,21 @@ curvasd = pygame.transform.scale(curvasd, (h_quadretto, h_quadretto))
 curvass = pygame.image.load('curvass.png')
 curvass = pygame.transform.scale(curvass, (h_quadretto, h_quadretto))
 
-testadestra = pygame.image.load('testadestra.png')
+testadestra = pygame.image.load('testadestra2.png')
 testadestra = pygame.transform.scale(testadestra, (h_quadretto, h_quadretto))
 
-testagiu = pygame.image.load('testagiu.png')
+testagiu = pygame.image.load('testagiu2.png')
 testagiu = pygame.transform.scale(testagiu, (h_quadretto, h_quadretto))
 
-testasinistra = pygame.image.load('testasinistra.png')
+testasinistra = pygame.image.load('testasinistra2.png')
 testasinistra = pygame.transform.scale(testasinistra, (h_quadretto, h_quadretto))
 
-testasu = pygame.image.load('testasu.png')
+testasu = pygame.image.load('testasu2.png')
 testasu = pygame.transform.scale(testasu, (h_quadretto, h_quadretto))
 
 class Serpente:
     def __init__(self) -> None:
-        self.corpo = [pygame.math.Vector2(7, 9), pygame.math.Vector2(6, 9), pygame.math.Vector2(5, 9)]
+        self.corpo = [pygame.math.Vector2(6, 8), pygame.math.Vector2(5, 8), pygame.math.Vector2(4, 8)]
         self.direzione = pygame.math.Vector2(1, 0)
         self.nuova_direzione = self.direzione
         self.vivo = True
