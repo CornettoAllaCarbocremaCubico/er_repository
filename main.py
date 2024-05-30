@@ -111,7 +111,7 @@ def game():
         serpente.morte()
         spinacina.spawn_spinacina(serpente.corpo)
 
-        if len(serpente.corpo) >= 15:  # Condizione di vittoria
+        if len(serpente.corpo) > 40:  # Condizione di vittoria
             vittoria = True
 
         screen.blit(sfondo, (0, 0))

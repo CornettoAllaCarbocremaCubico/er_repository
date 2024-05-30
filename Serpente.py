@@ -117,7 +117,7 @@ class Serpente:
 
     def collisione(self, frutto, spinacina):
         if self.corpo[0] == frutto.posizione:
-            frutto.nuova_posizione(self.corpo)
+            frutto.nuova_posizionemela(self.corpo)
             self.corpo.append(self.corpo[-1])
             suono_munch.play()
         if self.corpo[0] == spinacina.posizione:
