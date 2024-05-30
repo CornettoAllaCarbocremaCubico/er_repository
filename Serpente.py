@@ -28,21 +28,21 @@ codasu = pygame.image.load('codasu.png')
 codasu = pygame.transform.scale(codasu, (h_quadretto, h_quadretto))
 
 corpooriz = pygame.image.load('corpooriz.png')
-corpooriz = pygame.transform.scale(corpooriz, (h_quadretto, h_quadretto-1))
+corpooriz = pygame.transform.scale(corpooriz, (h_quadretto, h_quadretto))
 
 corpovert = pygame.image.load('corpovert.png')
-corpovert = pygame.transform.scale(corpovert, (h_quadretto-1, h_quadretto))
+corpovert = pygame.transform.scale(corpovert, (h_quadretto, h_quadretto))
 
-curvagd = pygame.image.load('curvagd.png')
+curvagd = pygame.image.load('curvagd2.png')
 curvagd = pygame.transform.scale(curvagd, (h_quadretto, h_quadretto))
 
-curvags = pygame.image.load('curvags.png')
+curvags = pygame.image.load('curvags2.png')
 curvags = pygame.transform.scale(curvags, (h_quadretto, h_quadretto))
 
-curvasd = pygame.image.load('curvasd.png')
+curvasd = pygame.image.load('curvasd2.png')
 curvasd = pygame.transform.scale(curvasd, (h_quadretto, h_quadretto))
 
-curvass = pygame.image.load('curvass.png')
+curvass = pygame.image.load('curvass2.png')
 curvass = pygame.transform.scale(curvass, (h_quadretto, h_quadretto))
 
 testadestra = pygame.image.load('testadestra2.png')

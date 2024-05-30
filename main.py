@@ -34,7 +34,7 @@ def mostra_schermata_di_morte():
     morte_rect = morte_surf.get_rect(center = (n_quadretti * h_quadretto // 2, n_quadretti * h_quadretto // 2))
     screen.blit(morte_surf, morte_rect)
     pygame.display.flip()
-    pygame.time.wait(2000) 
+    pygame.time.wait(3000) 
     main_menu()
 
 def main_menu():
@@ -106,12 +106,13 @@ def game():
         serpente.disegna_serpente()
         spinacina.disegna_spinacina()
         punteggio.disegna_punteggio(serpente.corpo, fontpunteggio)
+       
 
         pygame.display.update()
         clock.tick(fps)
 
     mostra_schermata_di_morte()
-    sound_morte.play()
+   # sound_morte.play()
 
 
 if __name__ == '__main__':
