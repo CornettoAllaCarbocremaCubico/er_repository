@@ -1,6 +1,7 @@
 import pygame
 import random
 
+
 n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto*n_quadretti,h_quadretto*n_quadretti))
@@ -13,7 +14,7 @@ class Spinacina:
     def __init__(self, fps, corpo_serpente):
         self.fps = fps
         self.tempo = 0
-        self.prossima = random.randint(5, 10)
+        self.prossima = random.randint(7, 15)
         self.posizionata = False
         self.tempo_scomparsa = 0
         self.nuova_posizione_spinacina(corpo_serpente)
@@ -23,7 +24,7 @@ class Spinacina:
             self.x = random.randint(0, n_quadretti - 1)
             self.y = random.randint(0, n_quadretti - 1)
             self.posizione = pygame.math.Vector2(self.x, self.y)
-            if self.posizione not in corpo_serpente:
+            if self.posizione not in corpo_serpente :
                 break
         self.posizionata = False
         self.tempo_scomparsa = 0
@@ -36,7 +37,7 @@ class Spinacina:
                 self.rimuovi()
         if self.tempo / self.fps >= self.prossima and not self.posizionata:
             self.nuova_posizione_spinacina(corpo_serpente)
-            self.prossima = random.randint(5, 10)
+            self.prossima = random.randint(7, 15)
             self.tempo = 0
             self.posizionata = True
             

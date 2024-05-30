@@ -8,7 +8,7 @@ n_quadretti = 15
 h_quadretto = 40
 screen = pygame.display.set_mode((h_quadretto * n_quadretti, h_quadretto * n_quadretti))
 clock = pygame.time.Clock()
-fps = 8
+fps = 7
 
 mixer.init()
 suono_munch = mixer.Sound('632231__audacitier__biting-apple-2.mp3')
@@ -60,7 +60,7 @@ testasu = pygame.transform.scale(testasu, (h_quadretto, h_quadretto))
 
 class Serpente:
     def __init__(self) -> None:
-        self.corpo = [pygame.math.Vector2(6, 8), pygame.math.Vector2(5, 8), pygame.math.Vector2(4, 8)]
+        self.corpo = [pygame.math.Vector2(2, 8), pygame.math.Vector2(1, 8), pygame.math.Vector2(0, 8)]
         self.direzione = pygame.math.Vector2(1, 0)
         self.nuova_direzione = self.direzione
         self.vivo = True
